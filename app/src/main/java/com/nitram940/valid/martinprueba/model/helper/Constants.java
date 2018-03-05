@@ -85,7 +85,7 @@ public class Constants {
 
 
     static final class Config {
-        static final String PACKAGE_NAME = "com.codingchallenge.nitra.codingchallenge.";
+        static final String PACKAGE_NAME = "com.nitram940.valid.martinprueba.";
     }
 
 
