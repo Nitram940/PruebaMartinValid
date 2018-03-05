@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_online_movies">" Mostando Online ver Offline"</string>
+    <string name="text_offline_movies">Mostrando Offline ver Online</string>
+    <string name="message">Mensaje</string>
+    <string name="maxim">Máximo</string>
+    <string name="title_activity_fullscreen_detail_movie">Detalle de Película</string>
+    <string name="artist">Artistas</string>
+    <string name="upCommingMovies">Proximos</string>
+    <string name="noData">"No hay datos "</string>
+    <string name="verifyConnection">Verifica la conexion a internet e intenta de nuevo</string>
+    <string name="offline">Local</string>
+    <string name="online">Web</string>
+    <string name="pagine">Página</string>
+    <string name="of">de</string>
+    <string name="do_search">....Haz una Búsqueda.....</string>
+    <string name="doSearchInstruction">Click en la parte superior en el boton de buscar luego busca tu película ideal..</string>
+    <string name="loadingWait">Cargando Espere por favor</string>
+    <string name="selectPage">" Selecciona Una Pagina"</string>
+    <string name="actor">Actor:</string>
+    <string name="personaje">Personaje:</string>
+    <string name="artist_name">Nombre Artista:</string>
+    <string name="TopArtist">Artistas Principales</string>
+</resources>
