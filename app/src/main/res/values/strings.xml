@@ -1,8 +1,41 @@
 <resources>
-    <string name="app_name">MartinPrueba</string>
+    <string name="app_name" translatable="false">CodingChallenge</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="tab_text_1" translatable="false">Tab 1</string>
+    <string name="tab_text_2" translatable="false">Tab 2</string>
+    <string name="tab_text_3" translatable="false">Tab 3</string>
+
+    <string name="title_activity_fullscreen_detail_movie">Movie Detail</string>
+
+    <string name="item_transition_name" translatable="false">item_transition_name</string>
+    
+    <string name="text_title" translatable="false">text_title</string>
+    <string name="text_sub_title" translatable="false">text_sub_title</string>
+    <string name="text_tagline" translatable="false">text_tagline</string>
+    <string name="text_description" translatable="false">text_description</string>
+
+    <string name="text_online_movies">Showing Online go to Offline</string>
+    <string name="text_offline_movies">Showing Offline go to Online</string>
+    <string name="upCommingMovies">Upcoming</string>
+    <string name="noData">No Data</string>
+    <string name="verifyConnection">Check the internet connection and try again</string>
+    <string name="offline">Local</string>
+    <string name="online">Online</string>
+    <string name="pagine">Page</string>
+    <string name="of">of</string>
+    <string name="do_search">.... Make a Search ....</string>
+    <string name="doSearchInstruction">" Click on the top of the search button then search for your ideal movie .."</string>
+    <string name="loadingWait">Loading Please wait</string>
+    <string name="selectPage">Select One Page</string>
+    <string name="maxim">Max</string>
+    <string name="message">Message</string>
+    <string name="actor">Actor:</string>
+    <string name="personaje">Character:</string>
+    <string name="development" translatable="false">DESARROLLADOR</string>
+    <string name="name_development" translatable="false">MARTIN SANTOS MOLANO</string>
+    <string name="TopArtist">Artitas Principales</string>
+    <string name="Artist">Artist</string>
 </resources>
