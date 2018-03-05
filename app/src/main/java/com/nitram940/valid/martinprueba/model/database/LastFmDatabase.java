@@ -14,6 +14,7 @@ import android.util.Log;
 import com.nitram940.valid.martinprueba.model.callback.LastFmFetchListener;
 import com.nitram940.valid.martinprueba.model.helper.Constants;
 import com.nitram940.valid.martinprueba.model.model_json.Artist;
+import com.nitram940.valid.martinprueba.model.model_json.ImageModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,11 @@ public class LastFmDatabase extends SQLiteOpenHelper {
         values.put(Constants.DATABASE.LISTENERS, artist.getListeners());
         values.put(Constants.DATABASE.STREAMABLE, artist.getStreamable());
         values.put(Constants.DATABASE.URL, artist.getUrl());
+        values.put(Constants.DATABASE.IMG_SMALL, artist.getImageModelList().get(0).getUrl());
+        values.put(Constants.DATABASE.IMG_MEDIUM, artist.getImageModelList().get(1).getUrl());
+        values.put(Constants.DATABASE.IMG_LARGE, artist.getImageModelList().get(2).getUrl());
+        values.put(Constants.DATABASE.IMG_EXTRALARGE, artist.getImageModelList().get(3).getUrl());
+        values.put(Constants.DATABASE.IMG_MEGA, artist.getImageModelList().get(4).getUrl());
 
         try {
             db.replaceOrThrow(Constants.DATABASE.TABLE_ARTISTS, null, values);
@@ -129,13 +135,13 @@ public class LastFmDatabase extends SQLiteOpenHelper {
                 cursorSize = mDb.rawQuery(Constants.DATABASE.GET_ALL_ARTIST_COUNT, null);
 
                 cursorSize.moveToFirst();
-                pageSize = (int) Math.ceil((double) cursorSize.getInt(0) / 20);
+                pageSize = (int) Math.ceil((double) cursorSize.getInt(0) / 50);
 
                 if (pageQuery > pageSize) {
                     pageQuery = 0;
                 }
 
-                pagination = " LIMIT " + 20 + " OFFSET  " + ((pageQuery) * 20);
+                pagination = " LIMIT " + 50 + " OFFSET  " + ((pageQuery) * 50);
                 cursorSize.close();
             }
 
@@ -163,6 +169,18 @@ public class LastFmDatabase extends SQLiteOpenHelper {
                         artist.setMbid_artist(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.MBID_ARTIST)));
                         artist.setStreamable(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.STREAMABLE)));
                         artist.setUrl(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.URL)));
+
+
+                        List<ImageModel> imageModel = new ArrayList<ImageModel>();
+
+                        imageModel.add(new ImageModel(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.IMG_SMALL))));
+                        imageModel.add(new ImageModel(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.IMG_MEDIUM))));
+                        imageModel.add(new ImageModel(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.IMG_LARGE))));
+                        imageModel.add(new ImageModel(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.IMG_EXTRALARGE))));
+                        imageModel.add(new ImageModel(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.IMG_MEGA))));
+
+                        artist.setImageModelList(imageModel);
+
                         //pendiente
 
                         artistList.add(artist);

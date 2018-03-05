@@ -85,10 +85,11 @@ public class inflate_items_Artist {
 
 
 
+                //pendiente instanciar el detalle de la vista principal
                 if (true) {
 
-                    if (artist.getImageModelList() != null)
-                        picture_picasso.LoadPicasso(artist.getImageModelList().get(0).getUrl(), poster_path, 1,false);
+                    if (artist.getImageModelList() != null & artist.getImageModelList().size()>=3)
+                        picture_picasso.LoadPicasso(artist.getImageModelList().get(3).getUrl(), poster_path, 1,false);
                 } else {
 
                     if (artist.getImageModelList() != null)

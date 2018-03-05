@@ -84,22 +84,33 @@
                 android:layout_toEndOf="@+id/lbl_url"
                 android:paddingStart="@dimen/appbar_padding_top"
                 tools:text="@string/text_sub_title"
+                android:autoLink="web"
                 android:textColor="@android:color/holo_red_light" />
+
+            <TextView
+                android:id="@+id/lbl_id_mbid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lbl_url"
+                android:maxLines="1"
+                android:text="@string/mbid"
+                android:textColor="@color/colorGreyLight" />
 
             <TextView
                 android:id="@+id/id_mbid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/lbl_url"
+                android:layout_above="@+id/poster_path"
+                android:layout_toEndOf="@+id/lbl_id_mbid"
                 android:maxLines="1"
-                tools:text="@string/text_url"
+                android:text="@string/mbid"
                 android:textColor="@color/colorGreyLight" />
 
             <ImageView
                 android:id="@+id/poster_path"
                 android:layout_width="match_parent"
                 android:layout_height="@android:dimen/thumbnail_height"
-                android:layout_below="@+id/id_mbid"
+                android:layout_below="@+id/lbl_id_mbid"
                 android:layout_centerHorizontal="true"
                 android:src="@mipmap/ic_launcher"
                 android:contentDescription="@string/artist" />

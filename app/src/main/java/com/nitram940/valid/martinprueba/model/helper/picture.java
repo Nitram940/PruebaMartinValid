@@ -49,8 +49,10 @@ public class picture {
     }
 
     public void LoadPicasso(final String uri, @NonNull final ImageView imageView, final Integer intento, boolean resize) {
-        this.resize=resize;
-        LoadPicasso(uri, imageView, intento, 0);
+        if (uri!=null) {
+            this.resize = resize;
+            LoadPicasso(uri, imageView, intento, 0);
+        }
     }
 
     public void LoadPicasso(final int intDrawable, @NonNull final ImageView imageView) {

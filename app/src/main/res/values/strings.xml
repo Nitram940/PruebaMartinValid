@@ -40,4 +40,5 @@
     <string name="artist">Artist</string>
     <string name="url">Url</string>
     <string name="artist_name">Name:</string>
+    <string name="mbid">mbid: </string>
 </resources>
