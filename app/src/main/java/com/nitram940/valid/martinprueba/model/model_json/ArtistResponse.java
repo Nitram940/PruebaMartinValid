@@ -2,15 +2,10 @@ package com.nitram940.valid.martinprueba.model.model_json;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 
 public class ArtistResponse {
     @SerializedName("topartists")
-    private List<Artist> topartists;
-    @SerializedName("@attr")
-    private AttributosModel attributosModel;
-
+    private topArtist topartists;
 
 
     //error
@@ -22,19 +17,14 @@ public class ArtistResponse {
     private int status_code;
 
 
-    public List<Artist> getTopartists() {
+    public ArtistResponse() {
+    }
+
+    public topArtist getTopartists() {
         return topartists;
     }
 
-    public void setTopartists(List<Artist> topartists) {
+    public void setTopartists(topArtist topartists) {
         this.topartists = topartists;
-    }
-
-    public AttributosModel getAttributosModel() {
-        return attributosModel;
-    }
-
-    public void setAttributosModel(AttributosModel attributosModel) {
-        this.attributosModel = attributosModel;
     }
 }

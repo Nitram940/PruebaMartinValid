@@ -16,7 +16,7 @@ public class ApiRetrofit {
 
     @Provides
     @Singleton
-    LastFmApis movieApis() {
+    LastFmApis lastFmApis() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.HTTP.BASE_URL)
                 .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create())

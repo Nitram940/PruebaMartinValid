@@ -8,13 +8,13 @@ public class Constants {
     public static String API_KEY = "829751643419a7128b7ada50de590067";
 
     public static final class HTTP {
-        public static final String BASE_URL = "http://ws.audioscrobbler.com/2.0/";
+        public static final String BASE_URL = "http://ws.audioscrobbler.com/";
     }
 
     public static final class DATABASE {
 
         public static final String DB_NAME = "music";
-        public static final int DB_VERSION = 1;
+        public static final int DB_VERSION = 6;
         public static final String TABLE_ARTISTS = "artists";
         public static final String TABLE_TRACKS = "tracks";
         public static final String TABLE_COUNTRY = "country";
@@ -30,7 +30,7 @@ public class Constants {
         //ARTIST
         public static final String MBID_ARTIST = "MBID_ARTIST"; //STRING PK
         public static final String NAME_ARTIST = "NAME_ARTIST"; //STRING
-
+        public static final String LISTENERS = "LISTENERS"; //STRING
 
         //TRACKS
         public static final String ID_TRACKS = "ID_TRACKS"; //PK
@@ -42,6 +42,8 @@ public class Constants {
         public static final String IMG_SMALL = "IMG_SMALL"; //STRING
         public static final String IMG_MEDIUM = "IMG_MEDIUM"; //STRING
         public static final String IMG_LARGE = "IMG_LARGE"; //STRING
+        public static final String IMG_EXTRALARGE = "IMG_EXTRALARGE"; //STRING
+        public static final String IMG_MEGA = "IMG_MEGA"; //STRING
 
         //DETAIL ITEMS
         public static final String TAGLINE = "TAGLINE"; //STRING
@@ -52,16 +54,20 @@ public class Constants {
 
         public static final String GET_QUERY_TOP_ARTISTS = "SELECT * FROM " + TABLE_ARTISTS + " ";
         public static final String GET_QUEY_TOP_TRACKS = "SELECT * FROM " + TABLE_TRACKS + " ";
+        public static final String GET_ALL_ARTIST_COUNT = "SELECT COUNT(*) AS CONTEO FROM " + TABLE_ARTISTS;
+
 
         public static final String CREATE_TABLE_ARTISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_ARTISTS + "" +
                 "(" + MBID_ARTIST + " TEXT PRIMARY KEY not null," +
                 NAME_ARTIST + " TEXT not null," +
-                PLAYCOUNT + " TEXT not null," +
+                LISTENERS + " TEXT not null," +
                 URL + " TEXT not null," +
                 STREAMABLE + " TEXT not null," +
-                IMG_SMALL + " TEXT not null," +
-                IMG_MEDIUM + " TEXT not null," +
-                IMG_LARGE + " TEXT not null)";
+                IMG_SMALL + " TEXT," +
+                IMG_MEDIUM + " TEXT," +
+                IMG_LARGE + " TEXT," +
+                IMG_EXTRALARGE + " TEXT," +
+                IMG_MEGA + " TEXT)";
 
         public static final String CREATE_TABLE_TRACKS = "CREATE TABLE IF NOT EXISTS " + TABLE_TRACKS + "" +
                 "(" + MBID + " TEXT PRIMARY KEY not null," +
@@ -70,14 +76,13 @@ public class Constants {
                 PLAYCOUNT + " TEXT not null," +
                 URL + " TEXT not null," +
                 STREAMABLE + " TEXT not null," +
-                IMG_SMALL + " TEXT not null," +
-                IMG_MEDIUM + " TEXT not null," +
-                IMG_LARGE + " TEXT not null)";    }
-
-
-    public static final class REFERENCE {
-        public static final String MOVIE = Config.PACKAGE_NAME + "movie_item";
+                IMG_SMALL + " TEXT," +
+                IMG_MEDIUM + " TEXT," +
+                IMG_LARGE + " TEXT," +
+                IMG_EXTRALARGE + " TEXT," +
+                IMG_MEGA + " TEXT)";
     }
+
 
     static final class Config {
         static final String PACKAGE_NAME = "com.codingchallenge.nitra.codingchallenge.";

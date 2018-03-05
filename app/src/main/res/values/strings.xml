@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">CodingChallenge</string>
+    <string name="app_name" translatable="false">LastFm</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
@@ -15,7 +15,7 @@
     <string name="text_title" translatable="false">text_title</string>
     <string name="text_sub_title" translatable="false">text_sub_title</string>
     <string name="text_tagline" translatable="false">text_tagline</string>
-    <string name="text_description" translatable="false">text_description</string>
+    <string name="text_url" translatable="false">text_description</string>
 
     <string name="text_online_movies">Showing Online go to Offline</string>
     <string name="text_offline_movies">Showing Offline go to Online</string>
@@ -36,6 +36,8 @@
     <string name="personaje">Character:</string>
     <string name="development" translatable="false">DESARROLLADOR</string>
     <string name="name_development" translatable="false">MARTIN SANTOS MOLANO</string>
-    <string name="TopArtist">Artitas Principales</string>
-    <string name="Artist">Artist</string>
+    <string name="TopArtist">Top Artist</string>
+    <string name="artist">Artist</string>
+    <string name="url">Url</string>
+    <string name="artist_name">Name:</string>
 </resources>

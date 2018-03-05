@@ -56,7 +56,7 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
     @Inject
     LastFmDatabase mDatabase;
     @Inject
-    LastFmService movieService;
+    LastFmService artistService;
     @Inject
     picture picture;
     @Inject
@@ -65,7 +65,7 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
 
     AlertDialog alertDialog;
     String string_search = "";
-    private ArtistAdapter moviesAdapter;
+    private ArtistAdapter artistAdapter;
     private TextView txt_pagination;
     private int query;
     private int pageQuery = 1;
@@ -117,7 +117,7 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
     }
 
     private void initViews() {
-        recycler = rootView.findViewById(R.id.movies_recycler_view);
+        recycler = rootView.findViewById(R.id.artist_recycler_view);
         recycler.setItemViewCacheSize(5); // establecer las vistas en cache
         recycler.setNestedScrollingEnabled(false);
 
@@ -185,10 +185,10 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
 
         switch (query) {
             case 0:
-                observable = movieService.getTopArtist(pageQuery);
+                observable = artistService.getTopArtist(pageQuery);
                 break;
             case 1:
-                //observable = movieService.getTopRatedMovies(pageQuery);
+                //observable = artistService.getTopRatedMovies(pageQuery);
                 break;
         }
     }
@@ -216,10 +216,10 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
 
                     @Override
                     public void onNext(@NonNull ArtistResponse artistResponse) {
-                        List<Artist> artistList = artistResponse.getTopartists();
+                        List<Artist> artistList = artistResponse.getTopartists().getArtists() ;
                         mDatabase.addListArtist(artistList);
                         inflateRecycler(artistList, null);
-                        max_pagination(artistResponse.getAttributosModel().getTotalPages());
+                        max_pagination(artistResponse.getTopartists().getAttributosModel().getTotalPages());
                     }
                 });
     }
@@ -303,21 +303,21 @@ public abstract class FragmentBaseLastFm extends Fragment implements LastFmFetch
         if (artistList == null) {
             recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         } else {
-            recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+            recycler.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
         }
 
-        if (moviesAdapter == null) {
+        if (artistAdapter == null) {
             if (artistList != null) {
-                moviesAdapter = new ArtistAdapter(artistList, R.layout.list_item_movie, getActivity().getApplicationContext(), picture);
+                artistAdapter = new ArtistAdapter(artistList, R.layout.list_item_artist, getActivity().getApplicationContext(), picture);
             } else {
-                moviesAdapter = new ArtistAdapter(artist, R.layout.list_item_movie, getActivity().getApplicationContext(), picture);
+                artistAdapter = new ArtistAdapter(artist, R.layout.list_item_artist, getActivity().getApplicationContext(), picture);
             }
-            recycler.setAdapter(moviesAdapter);
+            recycler.setAdapter(artistAdapter);
         } else {
             if (artistList != null) {
-                moviesAdapter.setSearchResponse(artistList);
+                artistAdapter.setSearchResponse(artistList);
             } else {
-                moviesAdapter.setSearchResponse(artist);
+                artistAdapter.setSearchResponse(artist);
             }
         }
 

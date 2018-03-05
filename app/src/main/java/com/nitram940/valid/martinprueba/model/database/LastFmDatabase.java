@@ -64,10 +64,12 @@ public class LastFmDatabase extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        ContentValues valuesGenresMovie = new ContentValues();
 
         values.put(Constants.DATABASE.MBID_ARTIST, artist.getMbid_artist());
         values.put(Constants.DATABASE.NAME_ARTIST, artist.getName_artist());
+        values.put(Constants.DATABASE.LISTENERS, artist.getListeners());
+        values.put(Constants.DATABASE.STREAMABLE, artist.getStreamable());
+        values.put(Constants.DATABASE.URL, artist.getUrl());
 
         try {
             db.replaceOrThrow(Constants.DATABASE.TABLE_ARTISTS, null, values);
@@ -98,7 +100,7 @@ public class LastFmDatabase extends SQLiteOpenHelper {
         private int pageQuery;
         private int pageSize = 0;
         private int idMovie = 0;
-        private boolean genres = false;
+
 
 
         LastFmFetcher(LastFmFetchListener listener, SQLiteDatabase db, int query, int pageQuery, String query_s) {
@@ -116,18 +118,27 @@ public class LastFmDatabase extends SQLiteOpenHelper {
             this.idMovie = idMovie;
         }
 
-        public LastFmFetcher(LastFmFetchListener listener, SQLiteDatabase db, boolean genres) {
-            this.genres = genres;
-            mListener = listener;
-            mDb = db;
-        }
-
         @Override
         public void run() {
             Cursor cursor = null;
-            Cursor cursor_cast = null;
             Cursor cursorSize;
             String pagination = "";
+
+            if (idMovie == 0) {
+
+                cursorSize = mDb.rawQuery(Constants.DATABASE.GET_ALL_ARTIST_COUNT, null);
+
+                cursorSize.moveToFirst();
+                pageSize = (int) Math.ceil((double) cursorSize.getInt(0) / 20);
+
+                if (pageQuery > pageSize) {
+                    pageQuery = 0;
+                }
+
+                pagination = " LIMIT " + 20 + " OFFSET  " + ((pageQuery) * 20);
+                cursorSize.close();
+            }
+
 
 
             switch (query) {
@@ -147,7 +158,11 @@ public class LastFmDatabase extends SQLiteOpenHelper {
                     do {
                         Artist artist = new Artist();
                         artist.setOffline(true);
-                        artist.setPlaycount(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.PLAYCOUNT)));
+                        artist.setListeners(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.LISTENERS)));
+                        artist.setName_artist(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.NAME_ARTIST)));
+                        artist.setMbid_artist(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.MBID_ARTIST)));
+                        artist.setStreamable(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.STREAMABLE)));
+                        artist.setUrl(cursor.getString(cursor.getColumnIndex(Constants.DATABASE.URL)));
                         //pendiente
 
                         artistList.add(artist);

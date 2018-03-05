@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MovieViewHolder> {
+public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder> {
 
     private boolean categorizate = false;
     private List<Artist> artistList;
@@ -72,14 +72,14 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MovieViewH
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-                                                            int viewType) {
+    public ArtistViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                               int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
-        return new MovieViewHolder(view);
+        return new ArtistViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ArtistViewHolder holder, final int position) {
             inflateItems.inflate_Artist(holder.itemView, artistList.get(position));
         lastPosition = animViews.setAnimation(holder.itemView, position, lastPosition);
     }
@@ -95,9 +95,9 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.MovieViewH
         return size;
     }
 
-    static class MovieViewHolder extends RecyclerView.ViewHolder {
+    static class ArtistViewHolder extends RecyclerView.ViewHolder {
 
-        MovieViewHolder(@NonNull View v) {
+        ArtistViewHolder(@NonNull View v) {
             super(v);
         }
     }

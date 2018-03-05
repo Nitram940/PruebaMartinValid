@@ -23,7 +23,7 @@ public class FragmentLastFm extends FragmentBaseLastFm {
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
 
-        if (fragmentArrayAdapter.size() < 4) {
+        if (fragmentArrayAdapter.size() < 1) {
             fragment = new FragmentLastFm();
             fragment.setArguments(args);
             fragmentArrayAdapter.add(fragment);

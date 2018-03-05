@@ -18,10 +18,13 @@ public interface LastFmApis {
 	 * @param page
 	 */
 	@NonNull
-	@GET("?method=geo.gettopartists")
-    Observable<ArtistResponse> getTopArtist(@Query("api_key") String apiKey,
-											@Query("country") String country,
-											@Query("page") int page);
+	@GET("2.0/")
+    Observable<ArtistResponse> getTopArtist(
+			@Query("method") String method,
+			@Query("api_key") String apiKey,
+			@Query("country") String country,
+			@Query("page") int page,
+			@Query("format") String format);
 
     /**
 	 *

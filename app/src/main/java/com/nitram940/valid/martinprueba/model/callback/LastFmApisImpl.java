@@ -17,6 +17,8 @@ public class LastFmApisImpl implements LastFmService {
     private final LastFmApis lastFmApis;
 
     public static String LANGUAGE_API="en";
+    public static String COUNTRY="Spain";
+    public static String FORMAT="json";
 
     private LastFmDatabase mDatabase;
 
@@ -32,7 +34,7 @@ public class LastFmApisImpl implements LastFmService {
     @NonNull
     @Override
     public Observable<ArtistResponse> getTopArtist(int page) {
-        return lastFmApis.getTopArtist(Constants.API_KEY, LANGUAGE_API, page);
+        return lastFmApis.getTopArtist("geo.gettopartists",Constants.API_KEY, COUNTRY, page,FORMAT);
     }
 
 

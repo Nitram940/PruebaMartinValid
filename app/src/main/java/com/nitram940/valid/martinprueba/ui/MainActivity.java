@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity
     @Inject
     picture picture;
     @Inject
-    LastFmService movieService;
+    LastFmService lastFmService;
     @Inject
     Utils utils;
 
@@ -357,8 +357,8 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 4;
+            //
+            return 1;
         }
     }
 }

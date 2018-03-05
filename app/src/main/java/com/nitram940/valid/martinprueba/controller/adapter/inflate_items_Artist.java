@@ -3,7 +3,6 @@ package com.nitram940.valid.martinprueba.controller.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,12 +31,11 @@ public class inflate_items_Artist {
         RelativeLayout container_item;
         TextView textIsOffline;
         ImageView imgIsOffline;
-        TextView tagline;
-        TextView status;
-        RecyclerView recyclerView;
+        TextView url=v.findViewById(R.id.url);
+        TextView mbid=v.findViewById(R.id.id_mbid);
 
-        artistLayout = v.findViewById(R.id.movies_layout);
-        artistName = v.findViewById(R.id.title);
+        artistLayout = v.findViewById(R.id.artist_layout);
+        artistName = v.findViewById(R.id.name_artist);
         poster_path = v.findViewById(R.id.poster_path);
         textIsOffline = v.findViewById(R.id.textIsOffline);
         imgIsOffline = v.findViewById(R.id.imgIsOffline);
@@ -46,9 +44,6 @@ public class inflate_items_Artist {
         container_item = v.findViewById(R.id.container_item);
         //ui
 
-        //detail
-        status = v.findViewById(R.id.status);
-        tagline = v.findViewById(R.id.tagline);
 
             container_item.setVisibility(View.VISIBLE);
             if (artist.isOffline()) {
@@ -65,12 +60,12 @@ public class inflate_items_Artist {
             if (true) {
                 //artist.isDetail() || artist.getInfoItem()
                 if (true) {
-                    status.setVisibility(View.VISIBLE);
                     //movieDescription.setMaxLines(Integer.MAX_VALUE);
                     artistName.setEllipsize(null);
                     artistName.setMaxLines(Integer.MAX_VALUE);
+                    url.setText(artist.getUrl());
+                    mbid.setText(artist.getMbid_artist());
                     //movieDescription.setEllipsize(null);
-                    tagline.setVisibility(View.VISIBLE);
                     //status.setText(artist.getStatus());
                 } else {
                     artistLayout.setOnClickListener(new View.OnClickListener() {
@@ -84,8 +79,6 @@ public class inflate_items_Artist {
                     });
                     //movieDescription.setEllipsize(TextUtils.TruncateAt.END);
                     //movieDescription.setMaxLines(1);
-                    tagline.setVisibility(View.GONE);
-                    status.setVisibility(View.GONE);
                     artistName.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                     artistName.setMaxLines(1);
                 }

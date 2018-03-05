@@ -8,8 +8,10 @@ import java.util.List;
 public class Artist {
     @SerializedName("name")
     private String name_artist;
-    @SerializedName("playcount")
-    private String playcount;
+    @SerializedName("listeners")
+    private String listeners;
+    @SerializedName("url")
+    private String url;
     @SerializedName("mbid")
     private String mbid_artist;
     @SerializedName("streamable")
@@ -25,9 +27,9 @@ public class Artist {
 
     }
 
-    public Artist(String name_artist, String playcount, String mbid_artist, String streamable) {
+    public Artist(String name_artist, String listeners, String mbid_artist, String streamable) {
         this.name_artist = name_artist;
-        this.playcount = playcount;
+        this.listeners = listeners;
         this.mbid_artist = mbid_artist;
         this.streamable = streamable;
     }
@@ -49,12 +51,12 @@ public class Artist {
         this.name_artist = name_artist;
     }
 
-    public String getPlaycount() {
-        return playcount;
+    public String getListeners() {
+        return listeners;
     }
 
-    public void setPlaycount(String playcount) {
-        this.playcount = playcount;
+    public void setListeners(String listeners) {
+        this.listeners = listeners;
     }
 
     public String getMbid_artist() {
@@ -79,5 +81,13 @@ public class Artist {
 
     public void setImageModelList(List<ImageModel> imageModelList) {
         this.imageModelList = imageModelList;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
